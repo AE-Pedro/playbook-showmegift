@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,7 +7,6 @@
   <title>Playbook Pré-Vendas | Show Me Gift</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Estilos Gerais (para desktop primeiro - "mobile-last" ou "desktop-first") */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -19,22 +19,16 @@
       height: 100%;
       scroll-behavior: smooth;
     }
-    body {
-      display: flex; /* Usar flexbox para layout de navegação e conteúdo */
-    }
-
-    /* Navegação (Sidebar) */
     nav {
       width: 260px;
       background-color: #ffffff;
       color: #1c1c1e;
       height: 100vh;
-      position: fixed; /* Fixa a navegação no lado esquerdo */
+      position: fixed;
       padding: 40px 25px;
       border-right: 1px solid #e5e5ea;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03);
-      overflow-y: auto; /* Para rolagem se houver muitos itens */
-      z-index: 1000; /* Garante que a nav fique por cima de outros elementos se sobrepor */
+      overflow-y: auto;
     }
     nav h2 {
       font-size: 22px;
@@ -49,29 +43,23 @@
       text-decoration: none;
       font-size: 17px;
       transition: all 0.3s ease;
-      padding: 5px 0; /* Adiciona um pequeno padding para facilitar o clique */
     }
     nav a:hover {
       transform: translateX(5px);
       color: #007aff;
     }
-
-    /* Conteúdo Principal */
     main {
-      margin-left: 260px; /* Offset para a largura da navegação */
-      flex-grow: 1; /* Permite que o main ocupe o espaço restante */
+      margin-left: 260px;
       padding: 60px 80px;
       transition: opacity 0.3s;
       height: 100vh;
-      overflow-y: auto; /* Habilita rolagem para o conteúdo principal */
-      -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
+      overflow-y: auto;
     }
     section {
       display: none;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.5s ease;
-      padding-bottom: 40px; /* Espaçamento entre seções para melhor leitura */
     }
     section.active {
       display: block;
@@ -81,7 +69,6 @@
     h1, h2 {
       margin-bottom: 20px;
       font-weight: 700;
-      line-height: 1.3; /* Melhora a leitura em títulos longos */
     }
     p, ul, ol {
       font-size: 18px;
@@ -101,113 +88,26 @@
     .emoji {
       margin-right: 8px;
     }
-
-    /* Estilos para Mobile (até 768px - tablets e celulares) */
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column; /* Pilha a navegação e o conteúdo */
-      }
-
-      nav {
-        width: 100%; /* Ocupa toda a largura */
-        height: auto; /* Altura automática, não 100vh */
-        position: relative; /* Não fixa, fica no fluxo do documento */
-        padding: 20px; /* Menor padding */
-        border-right: none; /* Remove a borda direita */
-        border-bottom: 1px solid #e5e5ea; /* Adiciona borda inferior */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-        display: none; /* Esconde a navegação por padrão em mobile */
-      }
-
-      nav.active { /* Para mostrar a navegação quando o menu for clicado */
-        display: block;
-      }
-
-      nav h2 {
-        margin-bottom: 20px; /* Menor margem */
-        text-align: center; /* Centraliza o título */
-      }
-      nav a {
-        text-align: center; /* Centraliza os links */
-        margin: 10px 0; /* Menor margem */
-        font-size: 16px; /* Fonte ligeiramente menor */
-      }
-
-      main {
-        margin-left: 0; /* Remove o offset */
-        padding: 30px 20px; /* Menor padding geral */
-        height: auto; /* Altura automática para o conteúdo rolar naturalmente */
-      }
-
-      h1 {
-        font-size: 28px; /* Títulos maiores em mobile para impacto */
-      }
-      h2 {
-        font-size: 24px;
-      }
-      p, ul, ol {
-        font-size: 16px; /* Fonte ligeiramente menor para o corpo do texto */
-      }
-
-      /* Botão de menu hamburguer para mobile */
-      .menu-toggle {
-        display: block; /* Mostra o botão apenas em mobile */
-        width: 40px;
-        height: 40px;
-        background-color: #007aff;
-        color: white;
-        text-align: center;
-        line-height: 40px;
-        font-size: 24px;
-        cursor: pointer;
-        position: fixed; /* Fixo no canto superior direito */
-        top: 20px;
-        right: 20px;
-        border-radius: 50%;
-        z-index: 1001; /* Acima de tudo */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      }
-    }
-
-    /* Estilos para Tablets (entre 769px e 1024px) */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      nav {
-        width: 200px; /* Navegação um pouco mais estreita */
-        padding: 30px 15px; /* Menor padding */
-      }
-      nav h2 {
-        font-size: 20px;
-        margin-bottom: 30px;
-      }
-      nav a {
-        font-size: 16px;
-      }
-      main {
-        margin-left: 200px; /* Ajusta o offset */
-        padding: 40px 40px; /* Menor padding */
-      }
-      h1 {
-        font-size: 32px;
-      }
-      h2 {
-        font-size: 26px;
-      }
-      p, ul, ol {
-        font-size: 17px;
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-  <nav id="mainNav">
+  <nav>
     <h2>🚀 Show Me Gift</h2>
     <a href="#inicio" onclick="navigate('inicio')">🏠 Início</a>
     <a href="#sobre" onclick="navigate('sobre')">✨ Sobre</a>
     <a href="#posicionamento" onclick="navigate('posicionamento')">🎯 Posicionamento</a>
     <a href="#icp" onclick="navigate('icp')">🎯 ICP</a>
     <a href="#spotter" onclick="navigate('spotter')">📊 Spotter</a>
+<div style="padding-left: 15px;">
+  <a href="#cadastro" onclick="navigate('cadastro')">➕ Cadastrar Leads</a>
+  <a href="#filtros" onclick="navigate('filtros')">▶️ Responder Filtros</a>
+</div>
+<a href="#prevenda" onclick="navigate('prevenda')">🧠 Pré-venda</a>
+<div style="padding-left: 15px;">
+  <a href="#oqueeprevenda" onclick="navigate('oqueeprevenda')">❓ O que é?</a>
+  <a href="#atribuicoes" onclick="navigate('atribuicoes')">📋 Atribuições</a>
+  <a href="#metricas" onclick="navigate('metricas')">📏 Métricas & Desafios</a>
+</div>
     <a href="#roteiro" onclick="navigate('roteiro')">📝 Roteiro</a>
     <a href="#objeções" onclick="navigate('objeções')">🛡️ Objeções</a>
     <a href="#qualificacao" onclick="navigate('qualificacao')">🎓 Qualificação</a>
@@ -220,17 +120,20 @@
 
   <main>
     <section id="inicio" class="active">
-      <h1>Playbook de Pré-Vendas 🚀</h1>
+      <h1><a href="https://www.showmegift.com.br/" target="_blank" style="text-decoration: none; color: inherit;">Show Me Gift</a></h1>
       <p>Seja bem-vindo ao universo <span class="highlight">Show Me Gift</span>! Este playbook foi criado para garantir excelência, padronização e encantamento nas abordagens da pré-venda. 🌟</p>
     </section>
+
     <section id="sobre">
       <h2>✨ Sobre a Show Me Gift</h2>
       <p>Especialista em kits e presentes corporativos com significado. Criamos experiências personalizadas que reforçam o valor das conexões humanas nas empresas. 🎁</p>
     </section>
+
     <section id="posicionamento">
       <h2>🎯 Posicionamento Comercial</h2>
       <p>Transformamos o ato de presentear em uma ferramenta de engajamento emocional, reforçando cultura e reconhecimento com kits criativos e intencionais.</p>
     </section>
+
     <section id="icp">
       <h2>🎯 Perfil de Cliente Ideal (ICP)</h2>
       <ul>
@@ -240,6 +143,7 @@
         <li>💡 Busca por inovação e branding interno</li>
       </ul>
     </section>
+
     <section id="spotter">
       <h2>📊 Uso do Spotter</h2>
       <ul>
@@ -249,7 +153,55 @@
         <li>📌 Histórico completo e qualificação</li>
       </ul>
     </section>
-    <section id="roteiro">
+
+    <section id="prevenda">
+    </section>
+    <section id="cadastro">
+  <h2>➕ Cadastrar Leads Manualmente</h2>
+  <p>Para cadastrar um lead ou cliente manualmente, clique no botão de <strong>+</strong> no topo da tela e selecione <em>“Lead/oportunidade”</em>. Preencha as informações disponíveis. Não é necessário preencher tudo: edite posteriormente conforme necessário.</p>
+</section>
+
+<section id="filtros">
+  <h2>▶️ Aplicar Filtro 1</h2>
+  <p>Após cadastrar, clique no ícone de <strong>play ▶️</strong> no card do lead para iniciar o <strong>Filtro 1</strong>. Responda às perguntas listadas para iniciar o enriquecimento. Isso ajuda a qualificar e entender melhor a jornada do lead.</p>
+</section>
+
+<section id="oqueeprevenda">
+  <h2>❓ O que é Pré-venda?</h2>
+  <p>Pré-venda é uma área de apoio às Vendas, que ajuda a qualificar o lead em parâmetros técnicos e situacionais. É um recurso de suma importância no processo comercial, pois antes de dar sequência à negociação, os pré-vendedores filtram os prospects que estão prontos tecnicamente e no momento certo para comprar.</p>
+  <p>É uma área-meio, um hub que recebe o lead, entra em contato com ele, levanta mais detalhes sobre sua empresa e suas dores. Caso tenha fit, os pré-vendedores também agendam uma reunião com o vendedor.</p>
+</section>
+
+<section id="atribuicoes">
+  <h2>📋 Atribuições da Pré-venda</h2>
+  <ul>
+    <li>✅ Qualificar o lead</li>
+    <li>📌 Identificar sua dor</li>
+    <li>🧠 Gerar inteligência de mercado</li>
+    <li>🚫 Reduzir churn com alinhamento comercial</li>
+  </ul>
+</section>
+
+<section id="metricas">
+  <h2>📏 Métricas e Desafios</h2>
+  <h3>🚧 Desafios</h3>
+  <ul>
+    <li>💬 Gerar rapport</li>
+    <li>🔄 Adaptar-se a objeções inesperadas</li>
+    <li>📞 Fazer volume com qualidade</li>
+    <li>🎯 "Vender" a reunião</li>
+  </ul>
+  <h3>📊 Métricas Quantitativas</h3>
+  <ul>
+    <li>📞 Ligações realizadas</li>
+    <li>📅 Reuniões agendadas</li>
+    <li>🏁 Conversões</li>
+    <li>📈 Leads qualificados</li>
+  </ul>
+  <h3>📈 Métricas Qualitativas</h3>
+  <p>Avaliam a qualidade da conversa, entendimento do processo e eficiência do agendamento.</p>
+</section>
+<section id="roteiro">
       <h2>📝 Roteiro de Abordagem</h2>
       <ol>
         <li>🙋 Quebra-gelo personalizado</li>
@@ -317,18 +269,6 @@
       });
       const target = document.getElementById(id);
       target.classList.add('active');
-
-      // Fechar o menu em mobile após a navegação
-      const mainNav = document.getElementById('mainNav');
-      if (window.innerWidth <= 768) { // Verifica se está em mobile
-        mainNav.classList.remove('active');
-      }
-    }
-
-    // Função para toggle do menu hamburguer em mobile
-    function toggleMenu() {
-      const mainNav = document.getElementById('mainNav');
-      mainNav.classList.toggle('active');
     }
   </script>
 </body>
